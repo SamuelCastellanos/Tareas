@@ -1,0 +1,155 @@
+---
+title: "Ejercicios dplyr"
+author: "Samuel Castellanos"
+format: html
+editor: visual
+theme: darkly
+---
+
+```{r,, echo=FALSE}
+library(dplyr)
+library(gapminder)
+```
+
+### 1.
+```{r}
+gapminder %>%
+  select(country, year, lifeExp)
+
+```
+
+### 2.
+```{r}
+gapminder %>%
+  filter(year == 2007)
+```
+
+### 3.
+```{r}
+gapminder %>%
+ filter(continent == "Asia")
+```
+
+### 4.
+```{r}
+gapminder %>%
+ filter(lifeExp > 70)
+```
+
+### 5.
+```{r}
+gapminder %>%
+ arrange(lifeExp)
+```
+
+### 6.
+```{r}
+gapminder %>%
+ arrange(desc(gdpPercap))
+```
+
+### 7.
+```{r}
+gapminder %>%
+ mutate(gdp_total = gdpPercap * pop)
+```
+
+### 8.
+```{r}
+gapminder %>%
+ filter(year == 2007, pop > 100000000)
+```
+
+### 9.
+```{r}
+gapminder %>%
+ filter(continent == "Europe") %>%
+ select(country, gdpPercap)
+```
+
+### 10.
+```{r}
+gapminder %>%
+ group_by(continent) %>%
+ summarise(avg_lifeExp = mean(lifeExp))
+```
+
+### 11.
+
+```{r}
+gapminder %>%
+ group_by(continent, year) %>%
+ summarise(avg_gdpPercap = mean(gdpPercap))
+```
+
+### 12.
+```{r}
+gapminder %>%
+ group_by(continent) %>%
+ summarise(max_lifeExp = max(lifeExp))
+```
+
+### 13.
+```{r}
+gapminder %>%
+ group_by(continent) %>%
+ summarise(n_countries = n_distinct(country))
+```
+
+### 14.
+```{r}
+gapminder %>%
+ group_by(continent) %>%
+ summarise(total_pop = sum(pop))
+```
+
+### 15.
+```{r}
+gapminder %>%
+ filter(continent == "Americas") %>%
+ group_by(year) %>%
+ summarise(avg_lifeExp = mean(lifeExp))
+```
+
+### 16.
+```{r}
+gapminder %>%
+ filter(year == 2007) %>%
+ arrange(desc(gdpPercap)) %>%
+ slice_head(n = 10)
+```
+
+### 17.
+```{r}
+gapminder %>%
+ group_by(year) %>%
+ slice_max(lifeExp, n = 1)
+```
+
+### 18.
+```{r}
+gapminder %>%
+ group_by(continent) %>%
+ summarise(median_gdpPercap = median(gdpPercap))
+```
+
+### 19.
+```{r}
+gapminder %>%
+ filter(year %in% c(1952, 2007)) %>%
+ select(country, year, lifeExp) %>%
+ tidyr::pivot_wider(names_from = year, values_from = lifeExp) %>%
+ mutate(change_lifeExp = `2007` - `1952`)
+```
+
+### 20.
+```{r}
+gapminder %>%
+ filter(year %in% c(1952, 2007)) %>%
+ select(country, year, gdpPercap) %>%
+ tidyr::pivot_wider(names_from = year, values_from = gdpPercap) %>%
+ mutate(change_gdp = `2007` - `1952`) %>%
+ arrange(desc(change_gdp)) %>%
+ slice_head(n = 5)
+```
+

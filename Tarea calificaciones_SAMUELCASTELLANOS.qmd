@@ -1,0 +1,97 @@
+---
+title: "Tarea calificaciones"
+format: html
+editor: visual
+author: Samuel Castellanos
+number-sections: true
+theme: Darkly
+---
+
+```{r}
+mañana<- c(4.0, 3.5, 3.8, 3.6, 4.1)
+
+tarde<- c(3.8, 3.5, 3.0, 2.9)
+
+noche<- c(3.1, 2.5, 2.6)
+
+```
+
+## Tamaño
+Se calcula la cantidad de estudiantes evaluados en la jornada de la mañana, tarde y noche
+```{r}
+length(mañana)
+length(tarde)
+length(noche)
+```
+
+## Media
+```{r}
+mean(mañana)
+```
+El promedio de las notas del horario de la mañana es de 3.8, siendo esta el mejor promedio dentro de las tres jornadas
+```{r}
+mean(tarde)
+```
+El promedio de las notas del horario de la tarde es de 3.3, sinedo este un promedio intermetdio dentro de las 3 jornadas
+```{r}
+mean(noche)
+```
+El promedio de las notas del horario de la noche es de 2.73, siendo el peor promedio de las 3 jornadas
+
+## Varianza poblacional
+```{r}
+Varianza_1 <-sum((mañana - mean(mañana))^2) / length(mañana)
+Varianza_1
+```
+Las varianza de las notas de la mañana es de 0.052, esto indica que tan dispersas estan las notas de cada estudiante segun el promedio, dando a entender que  los estudiantes tiene notas parejas.
+```{r}
+varianza_2 <-sum((tarde - mean(tarde))^2) / length(tarde)
+varianza_2
+```
+Las varianza de las notas de la tarde es de 0.135, este resultado muestra que las notas segundo el promedio son bastante diferentes, indicando que hay estudiantes con muy buenas notas y otros no tanto. 
+```{r}
+varianza_3 <-sum((noche - mean(noche))^2) / length(noche)
+varianza_3
+```
+Las varianza de las notas de la noche es de 0.06888889, esto muestra que las notas de los estudiantes segun el promedio son parecidas pero tambien indica que son bajas por tal todos los estudiantes tienen dificultades y bajo rendimiento academico.
+
+## Tamaño total, varianza poblacional total y media total
+```{r}
+Calificaciones<- c(mañana, tarde, noche)
+length(Calificaciones)
+```
+La cantidad total de calificaciones de todas las jornadas juntas son 12 notas
+```{r}
+mean(Calificaciones)
+```
+La media total de las calificaciones de las 3 jornadas juntas es de 3.366
+```{r}
+var_pob_total <-sum((Calificaciones - mean(Calificaciones))^2) / length(Calificaciones)
+var_pob_total
+```
+La varianza poblacional total de las calificaciones es de 0.2638, esto indica que tan desiguales son todas las notas de las 3 jornadas, por el resultado se ve que hay una diferencia alta en cuanto a los estudiantes con calificaciones altas y bajas.
+
+
+## varianza de las medias
+```{r}
+var_medias<- ((((mean(mañana)-mean(Calificaciones))^2)*length(mañana))+(((mean(tarde)-mean(Calificaciones))^2)*length(tarde))+(((mean(noche)-mean(Calificaciones))^2)*length(noche)))/length(Calificaciones)
+var_medias
+```
+La varianza de las medias de todas las calificaiones es de 0.18, este sen encarga de mirar que tan diferentes son las jornadas entre si, osea Mañana, tarde y noche en su promedio y segun el resultado se evidencia que el redimiento cambia drasticamente dependiendo de la jornada en la que se estudie.
+
+## Media de las varianzas
+```{r}
+media_var<- ((Varianza_1*length(mañana))+(varianza_2*length(tarde))+(varianza_3*length(noche))) / length(Calificaciones)
+media_var
+```
+La media de la varianza de todas las calificaciones es de 0.0838, esta indica que sin importar la jornada, esta mira las notas de los estudiantes dentro de su propio salón que varían entre sí y varian en unos 0.0838 puntos al cuadrado respecto a su promedio.
+
+
+
+
+
+
+
+
+
+

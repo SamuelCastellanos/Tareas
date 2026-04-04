@@ -1,0 +1,632 @@
+---
+title: "Ejercicios ggplot"
+format: html
+editor: visual
+author: Samuel Castellanos
+theme: darkly 
+---
+
+## 1
+
+```{r}
+library(ggplot2)
+students <- data.frame(
+  id = 1:20,
+  hours_study = c(2,3,4,5,6,3,4,7,8,5,6,7,3,2,9,10,4,6,8,5) ,
+  score = c(50,55,65,70,75,60,66,80,85,72,74,78,58,52,90,95,67,76,88,73) , 
+  gender = rep(c("Male", "Female"), 10) , 
+  major= rep(c("Engineering","Business","Arts","Science"), 5)
+)
+```
+
+### 1.
+
+```{r}
+ggplot(students, aes(hours_study, score)) +
+  geom_point()
+
+```
+
+El grafico muestra el puntaje obtenido por los estudiantes dependiendo de las horas hayan estudiado
+
+### 2.
+
+```{r}
+ggplot(students, aes(hours_study, score)) +
+  geom_point(color = "blue")
+```
+
+Muestra los puntos del grafico de el puntaje de las horas de estudio en azul 
+
+### 3.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point()
+```
+
+Aqui el grafico muestra le puntaje y las horas de estudio, pero tambien el color del punto es el genero de la persona que saco dicho puntaje en el grafico 
+
+### 4.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point(size = 4)
+```
+
+El grafico hizo mas grandes los puntos de los puntajes obtenidos segun las horas de estudio 
+
+### 5.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + ggtitle("Hours_study vs Score")
+```
+Se le agreo un titulo al grafico llamado Hours_study vs Score
+
+### 6.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + labs(x = "Hours study", y= "Score") + ggtitle("Hours_study vs Score")
+```
+Se les cambio el nombre a los puntos X y Y por X=Hours sturdy y Y=Score
+
+### 7.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + theme_minimal() + labs(x = "Hours study", y= "Score") + ggtitle("Hours_study vs Score")
+```
+Se cambio el fondo de la grafica de un color gris a un color blanco
+
+### 8.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + ggtitle("Hours_study vs Score") + theme(plot.title = element_text(hjust = 0.5)) + labs(x = "Hours study", y= "Score")
+```
+Se le añadio un titulo centrado a la grafica de puntaje y horas de estudio
+
+### 9.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + ggtitle("Hours_study vs Score") + theme(plot.title = element_text(size = 18)) + labs(x = "Hours study", y= "Score")
+```
+Se le agrego un titulo a la grafica con letra mas grande
+
+### 10.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + theme(legend.position = "none") + ggtitle("Hours_study vs Score") + labs(x = "Hours study", y= "Score")
+```
+Se le quito el tema de legend.position a la grafica
+
+### 11.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + geom_smooth(method = "lm") + ggtitle("Hours_study vs Score") + labs(x = "Hours study", y= "Score")
+```
+se hizo una linea recta que pasa o roza los puntos de la grafica
+
+### 12.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender)) +
+  geom_point() + geom_smooth(method = "lm", color = "red") + theme_minimal() + ggtitle("Hours_study vs Score") + labs(x = "Hours study", y= "Score")
+```
+Se cambio del color de la linea que cruza los puntos de la grafica a rojo
+
+### 13.
+
+```{r}
+ggplot(students, aes(gender, score, color = gender)) + 
+  geom_boxplot() + theme_minimal() + ggtitle("Hours_study vs Score") + labs(x = "Hours study", y= "Score")
+```
+Se hizo un daigrama de caja segun el puntaje obtenido y el genero de los estudiantes
+
+### 14.
+
+```{r}
+ggplot(students, aes(score)) +
+  geom_histogram() + theme_minimal() + ggtitle("Score count") + labs(x = "Score", y= "Count")
+```
+Se hizo un histograma de los puntajes obtenidos segun cuantas veces se repiten
+
+### 15.
+
+```{r}
+ggplot(students, aes(score)) +
+  geom_histogram(bins = 14) + theme_minimal() + ggtitle("Score count") + labs(x = "Score", y= "Count")
+```
+Se ancharon las lienas de histograma de los puntajes obtenidos
+
+### 16. y 17.
+
+```{r}
+ggplot(students, aes(hours_study, score)) +
+  geom_point() + facet_wrap(~major) + ggtitle("Hours_study vs Score") + labs(x = "Score", y= "Count")
+```
+Se hicieron 4 graficas de las horas de estudio y las notas pero cada una esta dividia en la materia en la que se tomaron los datos
+
+### 18.
+
+```{r}
+ggplot(students, aes(hours_study, score)) +
+  geom_point() + facet_grid(gender ~ major)
+```
+Se hicieron 8 graficas de las horas de estudio y las notas pero cada una esta dividia en
+la matera y el genero de los estudiantes 
+
+### 19.
+
+```{r}
+ggplot(students, aes(hours_study, score, shape = major)) +
+  geom_point() + theme_minimal() + ggtitle("Hours_study vs Score") + labs(x = "Hours study", y= "Score")
+```
+Se hizo la grafica de las notas de puntaje segun horas de estudio pero hay 4 formas de los puntos distintos; cada uno indica la materia en la qu se obtuvo ese puntaje segun las horas qu estudió
+
+### 20.
+
+```{r}
+ggplot(students, aes(hours_study, score, color = gender, size = score)) +
+  geom_point() + geom_smooth(method = "lm") + theme_minimal() + ggtitle("Hours_study vs Score") + labs(x = "Hours study", y= "Score")
+```
+Se hizo una grafica sobre el puntaje obtenido segun las horas de estudio en la que los puntos estan mas anchos si la nota es mas alta, el color del punto sea azul o rosa indica el genero del estudiante y se trazo una linea azul que pasa por los puntos azules de la grafica y el rosado pasa por los puntos rosas de la grafica
+
+## 2
+
+```{r}
+library(ggplot2)
+sales <- data.frame(
+  month = rep(month.abb[1:12], 4),
+  region = rep(c("North", "South", "East", "West"), each = 12), 
+  sales = c(120,130,125,140,150,160,170,165,155,145,135,125,
+ 100,110,105,120,130,135,140,138,132,125,118,110,
+ 90,95,100,110,115,120,125,123,118,112,105,98,
+ 80,85,88,95,100,105,110,108,102,97,90,85
+ ), 
+ marketing_spend = c(
+   20,22,21,23,25,26,28,27,26,24,23,22,
+ 18,19,18,20,22,23,24,23,22,21,20,19,
+ 15,16,17,18,19,20,21,20,19,18,17,16,
+ 12,13,14,15,16,17,18,17,16,15,14,13
+ ), 
+ employees = rep(c(50,45,40,35), each = 12))
+```
+
+### 1.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales)) +
+ geom_point()
+```
+Se hizo una grafica en la que se muestra cuandas ventas se hacen segun cuanto se emprendio en publicidad
+
+### 2.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales)) +
+ geom_point(color = "darkgreen")
+```
+Se cambio el color de los puntos de la grafica a verde oscuro
+
+### 3.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) +
+ geom_point()
+```
+Se cambio el color de los puntos de la grafica a 4 colores distintos, cada color se refiere a una region de los datos
+
+### 4.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) +
+ geom_point(size = 3)
+```
+Se ancharon los puntos de la grafica a un tamño de 3
+
+### 5.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) +
+ geom_point(size = 3) + ggtitle("Sales vs Marketing Investment")
+```
+Se le agrego un titulo a la grafica llamdo Sales vs marketing investment
+
+### 6.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) +
+ geom_point(size = 3) + labs(x = "Marketing Spend", y = "Sales") + ggtitle("Sales vs Marketing Investment")
+```
+Se cambiaron los nombres de X y Y en la grafica a Marketing spend y sales
+
+### 7.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) +
+ geom_point(size = 3) + theme_minimal() + labs(x = "Marketing Spend", y = "Sales") + ggtitle("Sales vs Marketing Investment")
+```
+Se cambio el fondo de la grafica a un fondo mas claro
+
+### 8.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) + geom_point(size = 3) + theme(axis.text = element_text(size = 12)) + labs(x = "Marketing Spend", y = "Sales") + ggtitle("Sales vs Marketing Investment")
+```
+Se le aumento el tamaño al texto que hay en la grafica a 12, por tal se ven mas grandes los numeros de la grafica
+
+### 9.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) + geom_point(size = 3) + theme(axis.text = element_text(size = 12)) + labs(x = "Marketing Spend", y = "Sales") + ggtitle("Sales vs Marketing Investment")
+```
+Se le aumento el tamaño al texto que hay en la grafica a 12, por tal se ven mas grandes los numeros de la grafica
+
+### 10.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region)) + geom_point(size = 3) + theme(axis.text = element_text(size = 12)) + labs(x = "Marketing Spend", y = "Sales") + ggtitle("Sales vs Marketing Investment") + theme(legend.position = "bottom")
+```
+Se cambiaron las posiciones que decian a que color pertenecia cada regio en los puntos de la grafia de al la derecha a abajo
+
+### 11.
+
+```{r}
+ggplot(sales, aes(month, sales)) +
+ geom_line()
+```
+Se hizo una grafica en la que indica la cantidad de ventas en cada mes del año en forma de lineas
+
+### 12.
+
+```{r}
+ggplot(sales, aes(month, sales, color = region, group = region)) +
+ geom_line()
+```
+Se hizo una grafica que muestra en lineas conectadas las ventas de diferentes regiones cada mes del año 
+
+### 13.
+
+```{r}
+ggplot(sales, aes(month, sales, color = region, group = region)) +
+ geom_line() + geom_point()
+```
+Se hizo una grafica que expresa en puntos con lineas conectadas las ventas en diferentes regiones cada mes del año
+
+### 14.
+
+```{r}
+ggplot(sales, aes(month, sales, color = region, group = region)) +
+ geom_line() + geom_point() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+Se giro a 45° los abreviados de los meses de la grafica
+
+### 15.
+
+```{r}
+ggplot(subset(sales, region == "North"), aes(month, sales, group = region)) +
+ geom_line(color = "blue") +
+ geom_point(color = "blue")
+```
+Se hizo una grafica que muestra las ventas de cada mes del año de la region norte en un color azul
+
+### 16.
+
+```{r}
+ggplot(sales, aes(region, sales, color = region)) +
+ geom_boxplot()
+```
+Se hizo el diagrama de caja de las regiones y la cantidad de ventas que obtuvieron
+
+### 17.
+
+```{r}
+ggplot(sales, aes(marketing_spend, color = region)) +
+ geom_histogram(bins = 10)
+```
+Se hizo un histograma que muestra que tanto marketing spend se usó y que regiones inviertieron mas o menos
+
+### 18, 19.
+
+```{r}
+ggplot(sales, aes(month, sales, group = region, color = region)) +
+ geom_line() + facet_wrap(~region) + geom_point(size = 3) + theme(axis.text = element_text(size = 12)) + labs(x = "Month", y = "Sales") + ggtitle("Month vs Sales") + theme(legend.position = "bottom")
+```
+Se hicieron 4 graficas que muestran cuantas ventas obtuvieron se obtuvieron en los meses del año de cada una de las regiones, cada una diferencia con un color
+
+### 20.
+
+```{r}
+ggplot(sales, aes(marketing_spend, sales, color = region, size = employees)) + geom_point() + geom_smooth(method = "lm", se = FALSE) + theme_minimal() + labs(x = "Marketing Spend", y = "Sales") + ggtitle("Sales vs Marketing Investment") + theme(legend.position = "bottom")
+```
+Se hizo una grafica que muestra cuantas ventas hizo cada region segun cuanto invirtieron en marketing y se trazo una linea en cada una que define la cantidad de empleados que se usaron para cada region
+
+## 3
+
+```{r}
+library(ggplot2)
+churn <- data.frame(
+  tenure = c(1,5,10,12,24,36,48,60,72,3,6,9,15,18,30,42,54,66,70,8), 
+  monthly_charges =  c(70,75,80,85,90,95,100,105,110,65,72,78,82,88,92,98,102,108,112,76), 
+  total_charges = c(70,375,800,1020,2160,3420,4800,6300,7920,195,432,702,1230,1584,2760,4116,5508,7128,7840,6), 
+  churn = rep(c("Yes", "No"), 10), 
+  contract = rep(c("Month-to-month", "One year", "Two year", "Month-to-month"),5), 
+  internet_service = rep(c("DSL", "Fiber optic", "DSL", "No"), 5)
+)
+```
+
+### 1.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges)) + geom_point()
+```
+Se hizo una grafica que muestra los cargos mensuales segun la tenencia
+
+### 2.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges, color = churn)) + geom_point()
+```
+Se agrego a la grafica si hubo o no rotacion de clientes en cada punto de la grafica
+
+### 3.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges, color = churn)) + geom_point() + geom_smooth(method="lm")
+```
+Se trazo una linea que pasa por los puntos de la grafica, una roza los puntos que si hubo rotacion de clientes y otro en la que no
+
+### 4.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges, color = churn)) + geom_point() + theme_minimal() + geom_smooth(method="lm")
+```
+Se cambio el fondo de la grafica a uno mas claro
+
+### 5.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges, color = churn)) + geom_point() + theme_minimal() + geom_smooth(method="lm") + ggtitle("Customer Charges vs Tenure")
+```
+Se le agrego un titulo a la grafica que se llama Customer Charges vs Tenure
+
+### 6.
+
+```{r}
+ggplot(churn, aes(churn, monthly_charges)) + geom_boxplot() + theme_minimal() + ggtitle("Customer Charges vs Churn")
+```
+Se hizo el diagrama de caja que muestra si hubo rotacion de clientes o no
+
+### 7.
+
+```{r}
+ggplot(churn, aes(tenure)) + geom_histogram()
+```
+Se hizo un histograma que indica la tenencia que hay en los datos y la cuenta de cuantos hubo 
+
+### 8.
+
+```{r}
+ggplot(churn, aes(tenure)) + geom_histogram(bins = 5)
+```
+Se ancharon las lineas del histograma
+
+### 9.
+
+```{r}
+ggplot(churn, aes(contract, monthly_charges)) + geom_violin() + theme_minimal() + ggtitle("Monthly charges vs Contract")
+```
+Se hace una grafica de violin que muestra distribución y densidad de probabilidad de que ocurran cargos mensuales cada mes, año y dos años de contrato
+
+### 10.
+
+```{r}
+ggplot(churn, aes(monthly_charges, fill = churn)) +
+ geom_density(alpha=0.5)
+```
+Se hizo una graficade densidad que muestra la distribución de probabilidad de que haya o no rotacion de clientes segun los largos mensuales
+
+### 11.
+
+```{r}
+ggplot(churn, aes(contract)) +
+ geom_bar()
+```
+Se hizo un diagrama de barras sobre la cantidad de contratos mes a mes, a un año y a 2 años
+### 12.
+
+```{r}
+ggplot(churn, aes(contract, fill = churn)) +
+ geom_bar()
+```
+Se puso la rotacion de clientes de los contratos mes a mes, a un año y a dos años
+
+### 13.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges)) + geom_point() + facet_wrap(~internet_service) + ggtitle("Monthly charges vs Contract on Internet service")
+```
+Se hicieron 3 graficas que muestran la tenencia segundo los cargos mensuales de el servicio de internet
+
+### 14.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges)) + geom_point() + facet_wrap(~contract) + ggtitle("Monthly charges vs Contract on contract")
+```
+Se hicieron 3 graficas de la tenencia segun los cargos mensuales de los contratos
+
+### 15.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges)) + stat_summary(fun=mean, geom="line")
+```
+Se hizo una grafica que muestra la tenencia segun los cargos mensuales y se trazo una linea que conecta los puntos
+
+### 16.
+
+```{r}
+ggplot(churn, aes(tenure, total_charges, color = churn, size = monthly_charges)) + geom_point() + geom_smooth(method="lm") + ggtitle("Total Charges vs Tenure")
+```
+Se hizo una grafica que muestra la tenencia segun los cargos totales, la anchura del punto mostrado la cantidad de cargos mensuales y el color si hubo o no rotacion de clientes
+
+### 17.
+
+```{r}
+ggplot(churn, aes(tenure, churn, color = monthly_charges)) + geom_jitter() + ggtitle("Churn vs Tenure")
+```
+Se hizo una grafica que muestra la tenencia segun la rotacion de clientes y el tono del punto muestra la cantidad de cargos mensuales que hubieron
+
+### 18.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges)) + geom_point(alpha=0.4) + ggtitle("monthly Charges vs Tenure")
+```
+Se hizo que los puntos de la grafica Monthly Charges vs ternure fuera un poco mas trasparentes
+
+### 19.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges, color = churn)) +
+ geom_point() +
+ theme(legend.position="bottom")
+```
+Se agregó en la grafica si hubo o no rotacion de clientes en cada punto
+
+### 20.
+
+```{r}
+ggplot(churn, aes(tenure, monthly_charges, color = churn)) + geom_point(size=3) + geom_smooth(method="lm", se=FALSE) + theme_minimal() + labs(title="Customer Churn Analysis", x="Tenure", y="Monthly Charges")
+```
+Se trazo una linea que muestra el aproximado de si hubo o no hubo rotacion de clientes en la grafica de la tenencia segun los cargos mesuales
+
+## 4
+
+```{r}
+library(readr)
+library(tidyverse)
+churn <-read.csv("C:\\Users\\SAMUEL CASTELLANOS\\OneDrive\\Escritorio\\Archivos R\\archive\\WA_Fn_UseC_Telco_Customer_Churn.csv")
+churn$Churn <- as.factor(churn$Churn)
+churn$Contract <- as.factor(churn$Contract)
+churn$InternetService <- as.factor(churn$InternetService)
+```
+
+### 1.
+
+```{r}
+ggplot(churn, aes(tenure)) +
+ geom_histogram(bins = 30)
+```
+
+### 2.
+
+```{r}
+ggplot(churn, aes(MonthlyCharges)) +
+ geom_histogram(bins = 30)
+```
+
+### 3.
+
+```{r}
+ggplot(churn, aes(TotalCharges)) +
+ geom_histogram(bins = 30)
+```
+
+### 4.
+
+```{r}
+ggplot(churn, aes(Churn)) +
+ geom_bar()
+```
+
+### 5.
+
+```{r}
+ggplot(churn, aes(Churn, MonthlyCharges)) +
+ geom_boxplot()
+```
+
+### 6.
+
+```{r}
+ggplot(churn, aes(MonthlyCharges, fill = Churn)) +
+ geom_density(alpha = 0.4)
+```
+
+### 7.
+
+```{r}
+ggplot(churn, aes(Contract, fill = Churn)) +
+ geom_bar(position = "fill")
+```
+
+### 8.
+
+```{r}
+ggplot(churn, aes(InternetService, fill = Churn)) +
+ geom_bar(position = "fill")
+```
+
+### 9.
+
+```{r}
+ggplot(churn, aes(tenure, MonthlyCharges)) +
+ geom_point(alpha = 0.4)
+```
+
+### 10.
+
+```{r}
+ggplot(churn, aes(tenure, MonthlyCharges, color = Churn)) +
+ geom_point(alpha = 0.4)
+```
+
+### 11.
+
+```{r}
+ggplot(churn, aes(tenure, MonthlyCharges, color = Churn)) +
+ geom_point(alpha = 0.4) +
+ geom_smooth(method = "lm")
+```
+
+### 12.
+
+```{r}
+ggplot(churn, aes(tenure, MonthlyCharges)) +
+ geom_point(alpha = 0.4) +
+ facet_wrap(~Contract)
+```
+
+### 13.
+
+```{r}
+ggplot(churn, aes(tenure, MonthlyCharges)) +
+ geom_point(alpha = 0.4) +
+ facet_wrap(~InternetService)
+```
+
+### 14.
+
+```{r}
+ggplot(churn, aes(tenure, TotalCharges,
+ size = MonthlyCharges,
+ color = Churn)) +
+ geom_point(alpha = 0.6)
+```
+
+### 15.
+
+```{r}
+ggplot(churn, aes(tenure, MonthlyCharges, color = Churn)) +
+ geom_point(alpha = 0.4) +
+ geom_smooth(se = FALSE) +
+ theme_minimal() +
+ labs(title = "Customer Churn Analysis",
+ x = "Customer Tenure",
+ y = "Monthly Charges")
+```
