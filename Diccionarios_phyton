@@ -1,0 +1,543 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/SamuelCastellanos/Tareas/blob/main/Diccionarios_phyton\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Diccionarios phyton"
+      ],
+      "metadata": {
+        "id": "-TJVt4SpFKN5"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "1"
+      ],
+      "metadata": {
+        "id": "4A0pLk-3FaRZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "user_profile = {\"Samuel Castellanos\": \"Samuel\", \"años\": 18, \"marca final\": \"A\"}\n",
+        "print(user_profile)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HlFhNQoCFafY",
+        "outputId": "03862535-af94-4243-e5f8-fcdab600134c"
+      },
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'Samuel Castellanos': 'Samuel', 'años': 18, 'marca final': 'A'}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "2"
+      ],
+      "metadata": {
+        "id": "llT2BlnWFjpp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "vehicle_info = {\"make\": \"Susuzi\", \"version\": \"swift\", \"release_year\": 2004}\n",
+        "print(vehicle_info[\"make\"])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "M0pJRtvIFkCY",
+        "outputId": "033c0699-b0b0-4dc0-8b49-cbf28920feea"
+      },
+      "execution_count": 42,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Susuzi\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "3"
+      ],
+      "metadata": {
+        "id": "-oNJzvaTF1Ng"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "vehicle_info = {\"make\": \"Susuzi\", \"version\": \"swift\", \"release_year\": 2004}\n",
+        "print(vehicle_info[\"version\"])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LnSU1uKcF1bw",
+        "outputId": "cbf4ae29-7923-484e-945b-cf3f20dd7cd3"
+      },
+      "execution_count": 43,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "swift\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "4"
+      ],
+      "metadata": {
+        "id": "wOkh6RSMF-jW"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "subject = {\"primer nombre\": \"Maria\", \"edad\": 16}\n",
+        "subject[\"residence\"] = \"Bogota\"\n",
+        "print(subject)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "cUrByqEmF_DM",
+        "outputId": "b4f0cac9-ddc2-4bb2-9824-42cd240584b9"
+      },
+      "execution_count": 44,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'primer nombre': 'Maria', 'edad': 16, 'residence': 'Bogota'}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "5"
+      ],
+      "metadata": {
+        "id": "l3OopLEcGQ-_"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "subject = {\"primer nombre\": \"Maria\", \"edad\": 16, \"residence\": \"Bogota\"}\n",
+        "subject[\"edad\"] = 16\n",
+        "print(subject)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "F5WGrgfaGRIn",
+        "outputId": "6a753555-b7dd-4d35-ecb4-d33e0b8fca87"
+      },
+      "execution_count": 45,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'primer nombre': 'Maria', 'edad': 16, 'residence': 'Bogota'}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "6"
+      ],
+      "metadata": {
+        "id": "OMRvqg8AGb75"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "subject = {\"primer nombre\": \"Maria\", \"edad\": 16, \"residence\": \"Bogota\"}\n",
+        "del subject[\"residence\"]\n",
+        "print(subject)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3zg9rEF_GcDa",
+        "outputId": "1aaa0664-fa17-46b2-8b76-c1dada9affc3"
+      },
+      "execution_count": 46,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'primer nombre': 'Maria', 'edad': 16}\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "7"
+      ],
+      "metadata": {
+        "id": "ThXxonFWGkDX"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "stock_items = {\"granadilla\": 3, \"arandano\": 5, \"fresa\": 2}\n",
+        "print(stock_items.keys())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EJ8FJnHhGkYH",
+        "outputId": "ee97de5c-f41f-47a0-ec0b-243101ec1454"
+      },
+      "execution_count": 47,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "dict_keys(['granadilla', 'arandano', 'fresa'])\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "8"
+      ],
+      "metadata": {
+        "id": "zYtxQFTjGpQC"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "stock_items = {\"granadilla\": 3, \"arandano\": 5, \"fresa\": 2}\n",
+        "print(stock_items.values())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9cZfH-1dGpYQ",
+        "outputId": "7b6e238f-6ac8-4735-e060-12bb298e7f62"
+      },
+      "execution_count": 48,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "dict_values([3, 5, 2])\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "9"
+      ],
+      "metadata": {
+        "id": "sOhm88uzGuZ_"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "stock_items = {\"granadilla\": 3, \"arandano\": 5, \"fresa\": 2}\n",
+        "for product, quantity in stock_items.items():\n",
+        "    print(product, quantity)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NiLw_aqHGvSC",
+        "outputId": "170f4b66-2e84-4a45-f3b1-0659e11c79f9"
+      },
+      "execution_count": 49,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "granadilla 3\n",
+            "arandano 5\n",
+            "fresa 2\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "10"
+      ],
+      "metadata": {
+        "id": "G-wy9FiYG1Dp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "score_sheet = {\"Jose\": 67, \"Luna\": 90, \"Maria\": 82}\n",
+        "print(\"Maria\" in score_sheet)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Gn7j7bSpG1Tw",
+        "outputId": "ec54d6e7-9a02-4dc0-9a75-3a5387171d73"
+      },
+      "execution_count": 50,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "True\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "11"
+      ],
+      "metadata": {
+        "id": "A007KMjsG-Ld"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "score_sheet = {\"Jose\": 67, \"Luna\": 90, \"Maria\": 82}\n",
+        "print(\"Pedro\" in score_sheet)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vz31wUu7G-dV",
+        "outputId": "c84417a2-21cd-4709-bf07-27845cb5c4e7"
+      },
+      "execution_count": 51,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "False\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "12"
+      ],
+      "metadata": {
+        "id": "KQCi4citHQkm"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data_points = {\"a\": 10, \"b\": 20, \"c\": 30}\n",
+        "total_sum = sum(data_points.values())\n",
+        "print(total_sum)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GqU1FvFsHQ0Q",
+        "outputId": "bfa3f3da-34ad-401f-ff74-cabab366edb8"
+      },
+      "execution_count": 52,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "60\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "13"
+      ],
+      "metadata": {
+        "id": "HNxnhHKvHS2Y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "warehouse = {\"pens\": 10, \"notebooks\": 5, \"erasers\": 8}\n",
+        "print(len(warehouse))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KnbxJLRbHTLG",
+        "outputId": "a4a70980-6f4d-41d7-db43-86e0bf609b80"
+      },
+      "execution_count": 53,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "3\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "14"
+      ],
+      "metadata": {
+        "id": "dB8Q_u1dHWp3"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nations = {\"Peru\": \"Lima\", \"Inglaterra\": \"Londres\", \"Japon\": \"Tokyo\"}\n",
+        "for nation, capital in nations.items():\n",
+        "    print(nation, capital)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MOTmietyHW_R",
+        "outputId": "4444bc59-1bcb-4a9d-c670-e2c502404002"
+      },
+      "execution_count": 54,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Peru Lima\n",
+            "Inglaterra Londres\n",
+            "Japon Tokyo\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "15"
+      ],
+      "metadata": {
+        "id": "lOnmpgPeHjPn"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "weather_log = {\"Lunes\": 22, \"Martes\": 24, \"Miercoles\": 21, \"Jueves\": 23}\n",
+        "max_temp = max(weather_log.values())\n",
+        "print(max_temp)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VOwtlq9cHjdB",
+        "outputId": "61109e7a-62a7-4997-8472-53519d123696"
+      },
+      "execution_count": 55,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "24\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Te damos la bienvenida a Colaboratory",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
